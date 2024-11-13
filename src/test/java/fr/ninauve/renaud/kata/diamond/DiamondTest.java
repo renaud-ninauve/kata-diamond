@@ -44,10 +44,22 @@ public class DiamondTest {
     }
 
     private List<String> printDiamondWithWidestCharLines(char widest) {
-        return widest == 'A' ? List.of("A") : List.of(
-                " A ",
-                "B B",
-                " A "
-        );
+        return switch (widest) {
+            case 'A' -> List.of("A");
+
+            case 'B' -> List.of(
+                    " A ",
+                    "B B",
+                    " A ");
+
+            case 'C' -> List.of(
+                    "  A  ",
+                    " B B ",
+                    "C   C",
+                    " B B ",
+                    "  A  ");
+
+            default -> List.of();
+        };
     }
 }
