@@ -50,12 +50,12 @@ public class DiamondTest {
         List<String> previous = printDiamondWithWidestCharLines((char) (widest - 1));
         List<String> diamondB = List.of(
                 " A ",
-                widestLine('B', previous),
+                widestLine(widest, previous),
                 " A ");
         List<String> diamondC = List.of(
                 "  A  ",
                 " B B ",
-                widestLine('C', previous),
+                widestLine(widest, previous),
                 " B B ",
                 "  A  ");
 
