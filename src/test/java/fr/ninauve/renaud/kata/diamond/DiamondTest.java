@@ -19,7 +19,15 @@ public class DiamondTest {
                         """
                                 .A.
                                 B.B
-                                .A.""")
+                                .A."""),
+                Arguments.of(
+                        'C',
+                        """
+                                ..A..
+                                .B.B.
+                                C...C
+                                .B.B.
+                                ..A..""")
         );
     }
 
