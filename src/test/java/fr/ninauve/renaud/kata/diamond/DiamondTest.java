@@ -44,22 +44,32 @@ public class DiamondTest {
     }
 
     private List<String> printDiamondWithWidestCharLines(char widest) {
+        List<String> diamondA = List.of("A");
+        List<String> diamondB = List.of(
+                " A ",
+                widestLine('B', diamondA),
+                " A ");
+        List<String> diamondC = List.of(
+                "  A  ",
+                " B B ",
+                widestLine('C', diamondB),
+                " B B ",
+                "  A  ");
+
         return switch (widest) {
-            case 'A' -> List.of("A");
-
-            case 'B' -> List.of(
-                    " A ",
-                    "B B",
-                    " A ");
-
-            case 'C' -> List.of(
-                    "  A  ",
-                    " B B ",
-                    "C   C",
-                    " B B ",
-                    "  A  ");
+            case 'A' -> diamondA;
+            case 'B' -> diamondB;
+            case 'C' -> diamondC;
 
             default -> List.of();
         };
+    }
+
+    private String widestLine(char widest, List<String> previous) {
+        return new StringBuilder()
+                .append(widest)
+                .repeat(" ", previous.getFirst().length())
+                .append(widest)
+                .toString();
     }
 }
