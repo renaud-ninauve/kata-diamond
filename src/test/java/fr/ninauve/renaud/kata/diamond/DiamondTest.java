@@ -48,20 +48,19 @@ public class DiamondTest {
             return List.of("A");
         }
         List<String> previous = printDiamondWithWidestCharLines((char) (widest - 1));
-        List<String> diamondB = List.of(
-                " A ",
-                widestLine(widest, previous),
-                " A ");
-        List<String> diamondC = List.of(
-                "  A  ",
-                " B B ",
-                widestLine(widest, previous),
-                " B B ",
-                "  A  ");
 
         return switch (widest) {
-            case 'B' -> diamondB;
-            case 'C' -> diamondC;
+            case 'B' -> List.of(
+                    " A ",
+                    widestLine(widest, previous),
+                    " A ");
+
+            case 'C' -> List.of(
+                    "  A  ",
+                    " B B ",
+                    widestLine(widest, previous),
+                    " B B ",
+                    "  A  ");
 
             default -> List.of();
         };
