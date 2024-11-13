@@ -24,6 +24,6 @@ public class DiamondTest {
     }
 
     public String printDiamondWithWidestChar(char widest) {
-        return null;
+        return "A";
     }
 }
