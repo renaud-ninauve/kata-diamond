@@ -12,7 +12,13 @@ public class DiamondTest {
 
     static Stream<Arguments> should_print_diamond() {
         return Stream.of(
-                Arguments.of('A', "A")
+                Arguments.of('A', "A"),
+                Arguments.of(
+                        'B',
+                        """
+                                .A.
+                                B.B
+                                .A.""")
         );
     }
 
@@ -20,7 +26,8 @@ public class DiamondTest {
     @MethodSource
     void should_print_diamond(char widest, String expected) {
         String actual = printDiamondWithWidestChar(widest);
-        assertThat(actual).isEqualTo(expected);
+        String expectedWithSpaces = expected.replace('.', ' ');
+        assertThat(actual).isEqualTo(expectedWithSpaces);
     }
 
     public String printDiamondWithWidestChar(char widest) {
