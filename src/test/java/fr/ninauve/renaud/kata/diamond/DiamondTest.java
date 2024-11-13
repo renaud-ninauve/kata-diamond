@@ -48,19 +48,20 @@ public class DiamondTest {
             return List.of("A");
         }
         List<String> previous = printDiamondWithWidestCharLines((char) (widest - 1));
+        List<String> previousWithOneSpace = addBeginingAndTrailingSpace(previous);
 
         return switch (widest) {
             case 'B' -> List.of(
-                    " A ",
+                    previousWithOneSpace.get(0),
                     widestLine(widest, previous),
-                    " A ");
+                    previousWithOneSpace.get(0));
 
             case 'C' -> List.of(
-                    "  A  ",
-                    " B B ",
+                    previousWithOneSpace.get(0),
+                    previousWithOneSpace.get(1),
                     widestLine(widest, previous),
-                    " B B ",
-                    "  A  ");
+                    previousWithOneSpace.get(1),
+                    previousWithOneSpace.get(2));
 
             default -> List.of();
         };
@@ -72,5 +73,11 @@ public class DiamondTest {
                 .repeat(" ", previous.getFirst().length())
                 .append(widest)
                 .toString();
+    }
+
+    private List<String> addBeginingAndTrailingSpace(List<String> lines) {
+        return lines.stream()
+                .map(line -> " " + line + " ")
+                .toList();
     }
 }
